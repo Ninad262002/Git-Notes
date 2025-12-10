@@ -41,14 +41,42 @@ git log -n 1 = to see latest commit
 I usually explain a git branch as a parallel line of development that diverges from the main project at a specific point in time.
 The primary purpose of branching is isolation and safety. It allows our team to work on new features or bug fixes in a contained environment without affecting the stable, production-ready code on the main branch.
 
-git branch sarah = Create a new branch
-git checkout sarah = switch to a branch 
-git checkout -b sarah = create a new branch and immediately switched to a new branch 'sarah'
-git branch = to see the list of branches
-git branch -d max = delete a branch
+    git branch sarah = Create a new branch
+    git checkout sarah = switch to a branch 
+    git checkout -b sarah = create a new branch and immediately switched to a new branch 'sarah'
+    git branch = to see the list of branches
+    git branch -d max = delete a branch
 
 
 HEAD - it points to the last commit in your current branch 
+
+
+    git log --graph --decorate
+--graph = it will show you git branches in graphical formate 
+-- decorate = it will create a chart with * and |
+<pre>
+ex -
+  *
+  |
+  |  *
+  *  |
+  |  * 
+  | /
+  *
+</pre>
+ Graph lines
+    The | and * characters show how branches split:
+    * → a commit
+    | → the commit line
+    Branches diverge when lines split
+    This is Git’s simple visualization of commit history.
+
+          git log --graph --decorate --oneline --all
+This is the BEST command to see:
+  All branches 
+  Their commit history
+  A visual graph
+
 
 
 
