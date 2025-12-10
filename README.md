@@ -77,6 +77,10 @@ This is the BEST command to see:
   Their commit history
   A visual graph
 
+:star: Git Merge
+Git has two type of merge "fast-forward" merge and "non-fast-forward" merge
+
+
 
 
 
