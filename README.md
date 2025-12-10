@@ -37,6 +37,21 @@ git log --name-only = to see files as well
 git log -n 1 = to see latest commit 
 
 
+:star: Git Branch
+I usually explain a git branch as a parallel line of development that diverges from the main project at a specific point in time.
+The primary purpose of branching is isolation and safety. It allows our team to work on new features or bug fixes in a contained environment without affecting the stable, production-ready code on the main branch.
+
+git branch sarah = Create a new branch
+git checkout sarah = switch to a branch 
+git checkout -b sarah = create a new branch and immediately switched to a new branch 'sarah'
+git branch = to see the list of branches
+git branch -d max = delete a branch
+
+
+HEAD - it points to the last commit in your current branch 
+
+
+
 
 
 
