@@ -79,6 +79,8 @@ This is the BEST command to see:
 
 :star: Git Merge
 Git has two type of merge "fast-forward" merge and "non-fast-forward" merge
+git merge <branch_name>
+
 
 
 
