@@ -48,7 +48,7 @@ The primary purpose of branching is isolation and safety. It allows our team to 
     git branch -d max = delete a branch
 
 
-HEAD - it points to the last commit in your current branch 
+HEAD - it points to the last commit in your current branch. 
 
 
     git log --graph --decorate
@@ -80,6 +80,68 @@ This is the BEST command to see:
 :star: Git Merge
 Git has two type of merge "fast-forward" merge and "non-fast-forward" merge
 git merge <branch_name>
+
+:star: Initializing Remote Repository
+Their are several platform on which we can host our remote repository like GitHub, GitLab, Bitbucket.
+
+Connection string is an url which let git know where the remote repository is located.
+
+We can add the remote repository to local repository with.
+    git remote add origin <https://.../.../ connection string>
+
+To list all remote git repositories.
+    git remote -v
+
+:star: Pushing 
+
+In order to keep our local and remote repository in sync, we have to push the data from our local repository to the remote repository.
+
+    git push origin master 
+
+:star: Cloning
+It allows a person to clone a remote repository in order to get all this data on their local machines.
+
+     git clone [ ssh link ]
+
+:star: Pull Request
+
+A Pull Request (PR) is a request to merge your changes from one branch into another branch.
+It’s mainly used when you want someone to review your code before it becomes part of the main project.
+
+Simple Example
+   Let’s say you have a project on GitHub with these branches:
+        main
+        feature-login
+   You worked on the feature-login branch and finished your task.
+   Now you want these changes added to the main branch.
+   You will create a Pull Request.
+ 
+Steps to Create a Pull Request (GitHub UI)
+1. Push your branch to GitHub
+2. Go to the repository page
+3. GitHub will show: “Compare & pull request” — click it
+4. Add a title and description about what you changed
+5. Click Create pull request
+6. Reviewer checks your code
+7. Reviewer approves
+8. Click Merge pull request
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
 
 
 
