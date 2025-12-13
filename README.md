@@ -127,6 +127,31 @@ Steps to Create a Pull Request (GitHub UI)
 8. Click Merge pull request
 
 
+:star: Fetching and Pulling
+
+Git Fetch
+What is does:
+Downloads the latest changes from the remote repository 
+Does not change your working branch or current branch.
+
+    git fetch origin
+    #To check changes
+    git log origin/master
+    git diff main origin/master
+
+ Git Pull
+ What it does:
+ Downloads changes AND immediately merges them into your current branch.
+ 
+    git pull origin master
+
+:star: Merge Conflicts
+A merge conflicts happens in Git when it cannot automatically combine changes from two branches.
+
+:star: Fork
+A fork in GitHub is a personal copy of someone else's repository that lives in your GitHub account.
+ 
+
  
 
 
