@@ -261,7 +261,168 @@ If you make an unwanted commit, Git lets you undo it safely using revert or rese
 
 
 
+⭐ Git stash
+   Git stash lets you temporarily save unfinished work without committing it, so you can switch branches safely.
+   
+   Imagine you're working on the third story on the sarah branch when a colleague notices a typo in the first story on the master branch that needs immediate fixing. Rather than committing your unfinished  work, you can quickly stash your changes, leaving a clean working area for the urgent fix.
 
+   To stash all modifications in your working directory, run:
+   
+      $ git stash
+
+   you can retrieve the most recent stash with:
+   
+     $ git stash pop
+
+  As you keep working, you might add more changes to your stash, which will accumulate over time. To view all stored stashes, use:
+
+     $ git stash list
+  Expected output
+  
+    stash@{0}: WIP on sarah: f4e8304 Added third story
+    stash@{1}: WIP on sarah: s53fwe4 Added fourth story
+    stash@{2}: WIP on sarah: k4e5432 Added fifth story
+
+  📌 Inspecting and Restoring Specific Stashes
+  If you want to inspect the contents of a specific stash, use the git stash show command followed by the stash identifier:
+
+     $ git stash show stash@{1}
+     fourth_story.md | 1 +
+     1 file changed, 1 addition(+)
+
+  To restore a specific stash instead of the most recent one, simply specify its identifier with the pop command:
+  
+     $ git stash pop stash@{1}
+     Dropped stash@{1} (2cfe…)
+
+⭐ Reflog
+git reflog shows a history of where HEAD has pointed — including commits, resets, rebases, and checkouts.
+It helps you recover lost commits after mistakes like git reset --hard.
+
+    $ git reflog
+
+👉 If you accidentally delete a commit, you can find its hash in reflog and restore it.
+
+### 📘 Understanding Git Internals — 
+
+---
+
+## 🔹 How Git Stores Data (Simple)
+
+* Git works like a **key–value store**
+* Every file and commit is stored using a **SHA-1 hash**
+* Same content → same hash
+* Hash decides **where Git stores the data**
+
+---
+
+## 🔹 Git Command Types
+
+### ✅ Porcelain Commands (User-Friendly)
+
+Used in daily work:
+
+* `git add`
+* `git status`
+* `git commit`
+* `git stash`
+
+👉 These hide Git’s internal complexity.
+
+---
+
+### 🔧 Plumbing Commands (Internal / Advanced)
+
+Used to inspect Git internals:
+
+* `git hash-object`
+* `git cat-file`
+
+👉 These work directly with Git’s internal data.
+
+---
+
+## 🔹 What Happens When You Commit a File
+
+1. File content is converted into a **SHA-1 hash**
+2. Git stores the file inside `.git/objects/`
+3. Folder name = **first 2 characters of hash**
+4. File name = **remaining characters**
+
+**Example:**
+
+```bash
+git hash-object first_story.txt
+```
+
+Output:
+
+```
+bea8d7fee8e7b11c2235ca623935e6ccccd8bac3
+```
+
+Stored at:
+
+```
+.git/objects/be/a8d7fee8e7b11c2235ca623935e6ccccd8bac3
+```
+
+---
+
+## 🔹 Viewing Stored Content
+
+```bash
+git cat-file -p <hash>
+```
+
+Example:
+
+```bash
+git cat-file -p bea8d7
+```
+
+Output:
+
+```
+This is my first story
+```
+
+---
+
+## 🔹 Git Object Types (Very Important)
+
+| Object     | What it Stores      | Simple Meaning      |
+| ---------- | ------------------- | ------------------- |
+| **Blob**   | File content        | Actual file data    |
+| **Tree**   | Folder structure    | Files & directories |
+| **Commit** | Snapshot + metadata | History record      |
+
+---
+
+## 🔹 What a Commit Contains
+
+* Reference to a **tree** (folder structure)
+* Reference to **parent commit**
+* Author & committer info
+* Commit message
+
+👉 A commit is a **snapshot**, not just a diff.
+
+---
+
+## 🔹 How Commits Are Connected
+
+* Each commit points to its **parent**
+* Commits → Trees → Blobs
+* This creates Git’s history chain
+
+---
+
+## 🧠 One-Line Summary (Interview Ready)
+
+> Git stores everything as hashed objects (commits, trees, blobs), and each commit is a snapshot linking files and history together.
+
+  
 
  
 
