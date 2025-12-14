@@ -169,6 +169,40 @@ A fork in GitHub is a personal copy of someone else's repository that lives in y
     1. Git pauses your feature commits 
     2. Updates your branch with main
     3. Re-applies your commits one by one.
+    
+:star: Interactive rebase
+
+Interactive rebase lets you edit and clean up your commits before merging a branch.
+If your feature branch has many small or messy commits, you can combine (squash) related commits into one clear commit.
+This keeps the project history clean, readable, and meaningful.
+
+How to start Interactive rebase
+
+    git rebase -i HEAD~4
+When you execute this command, Git displays a list of the selected commits along with the default command (usually "pick") and a set of instructions. The output may look like this:
+
+      pick fb9f191 Added second story
+      pick aaba5e7 Changes to second story
+      pick 8ad5d7b Oops more changes to second story
+      pick 6a6f68b More changes to second story
+      # Rebase dc9ad3c..6a6f68b onto 6a6f68b (4 commands)
+      #
+      # Commands:
+      # p, pick <commit> = use commit
+      # r, reword <commit> = use commit, but edit the commit message
+      # e, edit <commit> = use commit, but stop for amending
+      # s, squash <commit> = use commit, but meld into previous commit
+      # f, fixup <commit> = like "squash", but discard this commit's log message
+      # x, exec <command> = execute command (the rest of the line) using shell
+      # b, break = stop here (continue rebase later with 'git rebase --continue')
+      # d, drop <commit> = remove commit
+      # l, label <label> = label current HEAD with a name
+      # r, reset <label> = reset HEAD to a label
+      # m, merge [-C <commit> | -c <commit> | <label> [# <oneline>]]
+      #   : <message> (or the oneline, if no original merge commit was
+      #     specified). Use <commit> to reword the commit message.
+During interactive rebase, change pick to squash for the commits you want to combine.
+Save and exit, and Git will merge those commits into one single commit with all their changes.
 
 :star: Cherry-Picking
 Cherry-pick Take one specific commit from another branch and apply it to your current branch.
@@ -186,6 +220,50 @@ you only want one bug-fix commit from feature.
      git cherry-pick <commit-id>
 
 That single commit is copied and added
+
+:star: Resetting and Reverting
+If you make an unwanted commit, Git lets you undo it safely using revert or reset, depending on whether you want to keep or change commit history.
+
+📌 Reverting a commit 
+ Git revert is used to undo a commit without changing Git history.
+ It creates a new commit that reverses the changes of a previous commit, which makes it safe to use on shared branches like main.
+
+ $ git revert 8ad5d(commit id)  
+
+ 📌 Resetting a Commit
+    git reset is used to undo commits.
+    You can choose whether to keep the changes or delete them.
+    🔹 Soft Reset 
+        Removes the commit
+        Keeps the changes staged
+        Useful when you want to edit and recommit
+
+        git reset --soft HEAD~1
+ Result:
+   Commit is removed
+   File is still in staging area
+
+   🔹 Hard Reset
+        Removes the commit
+        Deletes all changes
+        File is completely removed
+        
+         git reset --hard HEAD~1
+         
+⚠️ Warning: Changes are permanently lost
+
+
+| Command                   | What it does                                    |
+| ------------------------- | ----------------------------------------------- |
+| `git revert <commit>`     | Safely undoes a commit by creating a new commit |
+| `git reset --soft HEAD~1` | Removes commit but keeps changes                |
+| `git reset --hard HEAD~1` | Removes commit and deletes changes              |
+
+
+
+
+
+ 
 
  
 
