@@ -150,7 +150,42 @@ A merge conflicts happens in Git when it cannot automatically combine changes fr
 
 :star: Fork
 A fork in GitHub is a personal copy of someone else's repository that lives in your GitHub account.
- 
+
+:star: Rebasing
+ Rebase= Make your work on top of the latest changes.
+
+  Situation
+   You started working on a feature branch. Meamihile, new commits were added to main. 
+   Your branch is now behind main,
+  What rebase dose?
+  Rebase take your commits, temporarily removes them, updates your branch with the latest main, and then puts your commits back on top.
+  Result: clean, straight commit history (no extra merge commits) 
+  
+  Simple example
+
+     git checkout feature
+     git rebase main
+  This means:
+    1. Git pauses your feature commits 
+    2. Updates your branch with main
+    3. Re-applies your commits one by one.
+
+:star: Cherry-Picking
+Cherry-pick Take one specific commit from another branch and apply it to your current branch.
+you don't merge the whole branch you pick only what you need
+
+Simple example
+
+:- main branch
+
+:- feature branch with many commits
+
+you only want one bug-fix commit from feature.
+
+     git checkout main
+     git cherry-pick <commit-id>
+
+That single commit is copied and added
 
  
 
